@@ -1,11 +1,13 @@
-function classIDX = nearestNeighbourClassifier(k, imgToClass, feats)
+function classIDX = nearestNeighbourClassifier(k, imgToClass, feats, dist_measure)
 
 N = 75; % This value depends on the number of images contained in each class
-D = zeros(15,N);
 
-for i = 1:size(feats,2)
-    D(i,:) = distFromClass(imgToClass,feats{1,i});
+if(nargin < 4)
+    D = vl_alldist2(imgToClass',feats');
+else
+    D = vl_alldist2(imgToClass',feats',dist_measure);
 end
+
 
 [~, min_ids] = sort(D(:));
 min_ids = min_ids(1:k);

@@ -1,5 +1,5 @@
 
-function feats = getTinyImages(img_datastore)
+function feats = getTinyImages(img_datastore, train)
 % image_paths is an N x 1 cell array of strings where each string is an
 %  image path on the file system.
 % image_feats is an N x d matrix of resized and then vectorized tiny
@@ -12,13 +12,34 @@ function feats = getTinyImages(img_datastore)
 % unit length (normalizing them) will increase performance modestly.
 
 images_cell = readall(img_datastore);
-% dim_tr = size(images_cell,1)*.75;
-dim_ts = size(images_cell,1)*.25;
-feats = zeros(dim_ts,256);
+if (nargin > 1)
+    if (train)
+        dim_tr = size(images_cell,1)*.75;
+        feats = zeros(dim_tr,256);
+        for i=1:75
+            img_new = imresize(im2double(images_cell{i,1}),[16, 16]);
+            temp = (img_new(:) - mean(img_new(:)))./std(img_new(:));
+            temp = temp./norm(temp);
+            feats(i,:) = temp(:);
+        end
+    else
+        dim_ts = size(images_cell,1)*.25;
+        feats = zeros(dim_ts,256);
 
-for i=76:100
-    temp = imresize(im2double(images_cell{i,1}),[16, 16]);
-    feats(i-75,:) = temp(:);
+        for i=76:100
+            img_new = imresize(im2double(images_cell{i,1}),[16, 16]);
+            temp = (img_new(:) - mean(img_new(:)))./std(img_new(:));
+            temp = temp./norm(temp);
+            feats(i-75,:) = temp(:);
+        end
+    end
+else
+    for i=1:size(images_cell,1)
+        img_new = imresize(im2double(images_cell{i,1}),[16, 16]);
+        temp = (img_new(:) - mean(img_new(:)))./std(img_new(:));
+        temp = temp./norm(temp);
+        feats(i,:) = temp(:);
+    end
 end
 
 

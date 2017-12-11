@@ -2,23 +2,21 @@ clc
 clear
 close all
 
-load DS % load all images datastores 
-load features_all
-load features_tr
-load features_ts
 load classes
-load testset % load cell of tiny images
+classes_pred = zeros(2985,1);
+file_names = dir('testing');
 
-realClass = [ones(25,1);2*ones(25,1);3*ones(25,1);...
-4*ones(25,1);5*ones(25,1);6*ones(25,1);...
-7*ones(25,1);8*ones(25,1);9*ones(25,1);...
-10*ones(25,1);11*ones(25,1);12*ones(25,1);...
-13*ones(25,1);14*ones(25,1);15*ones(25,1);];
+%% RUN 1
 
-classes = zeros(375,1);
+load features_all
+load testing_tinyFeats % load cell of tiny images
 
-for i = 1:375
-    classes(i) = nearestNeighbourClassifier(9,feats_ts(i,:),feats_tr);
+for i = 1:2985
+    classes_pred(i) = nearestNeighbourClassifier(1,testing_tinyFeats(i,:),feats_all);
 end
 
-fprintf("Precision: %.2f \n",(nnz(classes == realClass)/375)*100);
+fileID = fopen('run1.txt','w');
+for i = 1:2985
+    fprintf(fileID,'%12s %12s \n',file_names(i+2).name,classes{classes_pred(i)});
+end
+fclose(fileID);
