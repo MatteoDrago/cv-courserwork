@@ -3,7 +3,7 @@ clear all;
 clc;
 
 load DS;
-load lessbags;
+load lastbags;
 
 number_classes = 15;
 lambda = 0.001;
@@ -26,12 +26,12 @@ for j=1:number_classes
     end
     DS = DS_bag{j};
     one = DS(:,1:tr);
-    labels = [ones(1,tr) -ones(1,(number_classes-1)*tr)];
+    labels = [ones(tr,1); -ones((number_classes-1)*tr,1)];
     trainData = [one all];
-    [w, b] = vl_svmtrain(trainData, labels, lambda);
-    %Md1 = fitcsvm(trainData', labels); 
-    classifiers_w(:,j) = w;
-    classifiers_b(j) = b;
+    %[w, b] = vl_svmtrain(trainData, labels', lambda);
+    Md1 = fitcsvm(trainData', labels); 
+    classifiers_w(:,j) = Md1.Beta;
+    classifiers_b(1,j) = Md1.Bias;
 end
 %%
 
@@ -63,14 +63,14 @@ end
 disp(accuracy/375*100);
 %%
 
-    class = DS_bag{1};
-    testData = class(:,tr+1:end);
-    final_class = zeros(ts,1);
-    classification  = zeros(number_classes, size(testData,2));
-    for i=1:size(testData,2)
-        for j=1:number_classes
-            classification(j,i) = classifiers_w(:,j)'*testData(:,i) + classifiers_b(1,j);
-        end 
-        [value, index] = max(classification(:,i));
-        final_class(i) = index;
-    end
+%     class = DS_bag{1};
+%     testData = class(:,tr+1:end);
+%     final_class = zeros(ts,1);
+%     classification  = zeros(number_classes, size(testData,2));
+%     for i=1:size(testData,2)
+%         for j=1:number_classes
+%             classification(j,i) = classifiers_w(:,j)'*testData(:,i) + classifiers_b(1,j);
+%         end 
+%         [value, index] = max(classification(:,i));
+%         final_class(i) = index;
+%     end
