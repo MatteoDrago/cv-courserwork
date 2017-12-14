@@ -30,8 +30,9 @@
 \usepackage{graphicx} % Required to insert images
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{subfig} % Used for inserting figure side by side
-
+\usepackage{xspace}
 \def\code#1{\texttt{#1}}
+\newcommand{\MATLAB}{\textsc{Matlab}\xspace}
 
 % Margins
 \topmargin=-0.45in
@@ -127,6 +128,7 @@
 \pagenumbering{arabic} % Used to reset the page number after the title page
 \setcounter{page}{1}
 
-Lorem Ipsum
+\input{intro}
+\input{run1}
 
 \end{document}
