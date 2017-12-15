@@ -5,7 +5,7 @@ close
 DS = imageDatastore('./training','IncludeSubfolders',true,'ReadFcn',@preprocessingFcn,'LabelSource','foldernames');
 [tr_set, ts_set] = splitEachLabel(DS, 0.75);
 
-networkName = 'googlenet';
+networkName = 'alexnet';
 
 switch networkName
     case 'alexnet'
