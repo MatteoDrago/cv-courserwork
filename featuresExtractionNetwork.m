@@ -13,6 +13,7 @@ switch networkName
     case 'alexnet'
         anet = alexnet; 
         layer = 'fc7';
+        parpool;
         disp('Starting evaluating activations . . .');
         trainingFeaturesALL = activations(anet,train_DS,layer);
         testFeaturesALL = activations(anet,test_DS,layer);
@@ -21,8 +22,8 @@ switch networkName
         layer = 'loss3-classifier';
         disp('Starting evaluating activations . . .');
         parpool;
-        trainingFeatures = activations(gnet,tr_set,layer);
-        validationFeatures = activations(gnet,ts_set,layer);
+        trainingFeatures = activations(gnet,train_DS,layer);
+        validationFeatures = activations(gnet,test_DS,layer);
         save('GN_tr','trainingFeatures');
         save('GN_vd','validationFeatures');
     case 'vgg19'
@@ -30,10 +31,8 @@ switch networkName
         layer = 'fc7';
         disp('Starting evaluating activations . . .');
         parpool;
-        trainingFeatures = activations(vnet,tr_set,layer);
-        validationFeatures = activations(vnet,ts_set,layer);
-%         save('GN_tr','trainingFeatures');
-%         save('GN_vd','validationFeatures');
+        trainingFeatures = activations(vnet,train_DS,layer);
+        validationFeatures = activations(vnet,test_DS,layer);
     otherwise
         disp('Network name not valid');
 end

@@ -15,10 +15,9 @@ trainingLabels = DS.Labels;
 options = statset('UseParallel',true);
 classifier = fitcecoc(trainingFeaturesALL,trainingLabels,...
      'Coding','onevsall','Options',options);
-% classifier = fitcknn(trainingFeatures_reduced,trainingLabels,'NSMethod','exhaustive','Distance','minkowski',...
-%     'Standardize',1);
-% predictedLabels = predict(classifier,testFeatures_reduced);
-% accuracy = mean(predictedLabels == testLabels);
+predictedLabels = predict(classifier,testFeatures_reduced);
+accuracy = mean(predictedLabels == testLabels);
+
 
 %% Heatmap Plot
 
