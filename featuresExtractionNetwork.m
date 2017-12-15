@@ -2,18 +2,20 @@ clc
 clear
 close
 
-DS = imageDatastore('./training','IncludeSubfolders',true,'ReadFcn',@preprocessingFcn,'LabelSource','foldernames');
-[tr_set, ts_set] = splitEachLabel(DS, 0.75);
+train_DS = imageDatastore('./training','IncludeSubfolders',true,'ReadFcn',@preprocessingFcn,'LabelSource','foldernames');
+test_DS = imageDatastore('./testing','IncludeSubfolders',true,'ReadFcn',@preprocessingFcn,'LabelSource','foldernames');
 
-networkName = 'vgg19';
+%[tr_set, ts_set] = splitEachLabel(DS, 0.75);
+
+networkName = 'alexnet';
 
 switch networkName
     case 'alexnet'
         anet = alexnet; 
         layer = 'fc7';
+        parpool;
         disp('Starting evaluating activations . . .');
-        trainingFeatures = activations(anet,tr_set,layer);
-        validationFeatures = activations(anet,ts_set,layer);
+        testFeaturesALL = activations(anet,test_DS,layer);
     case 'googlenet'
         gnet = googlenet;
         layer = 'loss3-classifier';

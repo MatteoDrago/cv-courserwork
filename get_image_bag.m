@@ -1,4 +1,6 @@
 clear;
+
+% this code compute a BOW representation for every image in training set
 load bagMD_2;
 load DS;
 
