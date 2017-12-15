@@ -6,10 +6,9 @@ DS = imageDatastore('./training','IncludeSubfolders',true,'LabelSource','foldern
 [tr_set, ts_set] = splitEachLabel(DS, 0.75);
 
 % create and cluster with kmeans clustering a BOVW from train set images
-% using custom feature extraction function
-voc_size = 800;
+% using custom features extraction function
+voc_size = 500;
 bag = bagOfFeatures(tr_set,'CustomExtractor',@myfeatureExtractor, 'VocabularySize', voc_size);
-
 
 %save('bagMD_2', 'bag');
 

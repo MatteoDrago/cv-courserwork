@@ -12,13 +12,12 @@ DS = imageDatastore('./training','IncludeSubfolders',true,'ReadFcn',@preprocessi
 
 trainingLabels = tr_set.Labels;
 testLabels = ts_set.Labels;
-% pool = parpool; % Invoke workers
+pool = parpool; % Invoke workers
 options = statset('UseParallel',true);
 % classifier = fitcecoc(trainingFeatures_reduced,trainingLabels,...
 %     'Coding','onevsall','Options',options);
 % classifier = fitcknn(trainingFeatures_reduced,trainingLabels,'NSMethod','exhaustive','Distance','minkowski',...
 %     'Standardize',1);
-classifier = fitcsvm(trainingFeatures_reduced,trainingLabels);
 predictedLabels = predict(classifier,testFeatures_reduced);
 accuracy = mean(predictedLabels == testLabels);
 
