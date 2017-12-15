@@ -1,0 +1,7 @@
+\section{Run 3}
+For this last approach we decided to implement \textbf{transfer learning}: this means that in order to extract significant features from our images we used layers of a pre-trained neural network. So, to complete our classification architecture, we re-trained just the last layers used for classification on our training set, without doing backpropagation on the previous layers. Surely one advantage of this solution is that allowed us to save a considerable amount of computational time for the training of all the layers of the network.
+
+For this particular problem we decided to use the convolutional neural network (CNN) \code{alexnet}, winner of the 2012 ImageNet Large Scale Visual Recognition Challenge (ILSVRC2012). At the time, it takes an entire week to train the complete network with the competition dataset (1.2M of images).
+
+
+
