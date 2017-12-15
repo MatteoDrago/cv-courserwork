@@ -21,3 +21,14 @@ for i = 1:2985
     fprintf(fileID,'%12s %12s \n',file_names(i+2).name,classes{classes_pred(i)});
 end
 fclose(fileID);
+
+%% RUN 3
+
+load prediction
+
+fileID = fopen('run3.txt','w');
+for i = 1:2985
+    disp(i);
+    fprintf(fileID,'%12s %12s \n',file_names(i+2).name,predictedLabels(i));
+end
+fclose(fileID);
