@@ -77,22 +77,22 @@ figure;
 plot(-log10(lambdas'),accuracies, 'b', 'linewidth', 2);
 grid on
 xlabel('-log_{10}(\lambda)', 'fontsize',14); ylabel('accuracy','fontsize',14);
-title('Accuracy for different values of lambda','fontsize',14);
+title('Accuracy for different values of lambda','fonsize',14);
 
-% different bag representation
+%% different bag representation
 load DS;
 load imagesbag800_4;
+number_classes = 15;
+lambda = 0.0001;
 N = 100;
 tr = 75;
 ts = 25;
 voc_size = 800;
 accuracies2 = zeros(length(lambdas), 1);
-m = 0;
-
-for lambda = lambdas
-m=m+1;
+% with these vari
 classifiers_w = zeros(voc_size, number_classes);
 classifiers_b = zeros(1, number_classes);
+for lambda = lambdas
 % building 15 one vs all linear classifiers with SVMs
 for j=1:number_classes
     all = [];
@@ -146,9 +146,7 @@ end
 accuracies2(m) = accuracy/375;
 end
 %disp(accuracy/375);
-hold on;
-plot(-log10(lambdas'),accuracies2, 'r', 'linewidth', 2);
-legend('vocabulary 1', 'vocabulary 2');
+
 %% testing run2 on complete test dataset
 
 % load bagMD_2;

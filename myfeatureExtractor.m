@@ -3,7 +3,7 @@ function [features, featureMetrics] = myfeatureExtractor(img)
     img = imresize(im2double(img), [256 256]);
     patchSize = 8; %intial value used: 8
     sampledStep = 4;
-    % Feature extraction ... It will be really slow
+    % Features extraction
     count = 1;
     for x = 1:sampledStep:(256-patchSize)
         for y = 1:sampledStep:(256-patchSize)
