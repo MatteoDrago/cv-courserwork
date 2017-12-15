@@ -1,6 +1,6 @@
 function classIDX = nearestNeighbourClassifier(k, imgToClass, feats, dist_measure)
 
-N = 75; % This value depends on the number of images contained in each class
+N = 100; % This value depends on the number of images contained in each class
 
 if(nargin < 4)
     D = vl_alldist2(imgToClass',feats');

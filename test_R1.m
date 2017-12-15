@@ -19,14 +19,18 @@ K = 20;
 prec = zeros(K,1);
 for k = 1:K
     for i = 1:375
-        classes(i) = nearestNeighbourClassifier(k,feats_ts(i,:),feats_tr);
+        classes(i) = nearestNeighbourClassifier(k,feats_ts(i,:),feats_tr,'HELL');
     end
     prec(k) = (nnz(classes == realClass)/375);
 end
 
+load P
 figure
-stem(prec)
+plot(1:15,P(1:15,1:3),'Linewidth',1.2)
+xlabel('k')
+ylabel('Accuracy')
 grid on
-ylim([0.17 0.21]);
+axis([1 15 0.1 0.23]);
+legend('L_{INF}','L_2','L_1');
 
 % fprintf("Precision: %.2f \n",(nnz(classes == realClass)/375)*100);
