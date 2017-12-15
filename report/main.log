@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.7.30)  14 DEC 2017 22:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.7.30)  15 DEC 2017 08:58
 entering extended mode
 **./main.tex
 (main.tex
@@ -551,16 +551,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (intro.tex) (run1.tex)
-
+(run2.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+) 
 AED: lastpage setting LastPage
 [1
 
 ] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 4205 strings out of 493335
- 60517 string characters out of 3136680
+ 4210 strings out of 493335
+ 60565 string characters out of 3136680
  230599 words of memory out of 3000000
- 7678 multiletter control sequences out of 15000+200000
+ 7680 multiletter control sequences out of 15000+200000
  8363 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,10n,43p,771b,234s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -569,7 +574,7 @@ Here is how much of TeX's memory you used:
 mcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 r10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt1
 0.pfb>
-Output written on main.pdf (2 pages, 55809 bytes).
+Output written on main.pdf (2 pages, 56258 bytes).
 PDF statistics:
  25 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

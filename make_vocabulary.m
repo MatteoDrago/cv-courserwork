@@ -10,7 +10,6 @@ DS = imageDatastore('./training','IncludeSubfolders',true,'LabelSource','foldern
 voc_size = 800;
 bag = bagOfFeatures(tr_set,'CustomExtractor',@myfeatureExtractor, 'VocabularySize', voc_size);
 
-
 %save('bagMD_2', 'bag');
 
 %% 

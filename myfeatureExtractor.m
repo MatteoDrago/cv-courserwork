@@ -1,7 +1,7 @@
 function [features, featureMetrics] = myfeatureExtractor(img)
     % Image pre-processing
     img = imresize(im2double(img), [256 256]);
-    patchSize = 4; %intial value used: 8
+    patchSize = 8; %intial value used: 8
     sampledStep = 4;
     % Feature extraction ... It will be really slow
     count = 1;
